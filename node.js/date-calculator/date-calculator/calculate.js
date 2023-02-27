@@ -9,7 +9,9 @@ const add = (date, days) => {
 const distance = (dateOne, dateTwo) => {
     let date1 = new Date(dateOne);
     let date2 = new Date(dateTwo);
-    let result = date1.getDate() - date2.getDate()
+    let result = date1.getTime() - date2.getTime();
+    result = result / (1000 * 60 * 60 * 24);
+    result = Math.ceil(Math.abs(result));
     return result;
 };
 
