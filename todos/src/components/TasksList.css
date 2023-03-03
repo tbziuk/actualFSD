@@ -1,0 +1,54 @@
+ul.tasks {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px 55px 10px 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 100%;
+    list-style-type: none;
+    text-align: left;
+    position: relative;
+    line-break: normal;
+    word-break: normal;
+}
+
+ul li.checked {
+    background-color: rgba(162, 240, 158, 0.5);
+}
+
+ul li:target {
+    max-height: max-content;
+    white-space: normal;
+
+}
+
+ul li:hover span {
+    color: #000;
+}
+
+li span {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font-weight: bold;
+    color: transparent;
+}
+
+li:hover span:hover {
+    color: red;
+    cursor: pointer;
+}
+
+input.checkbox {
+    margin: 0;
+    margin-left: 15px;
+    top: 12px;
+    right: 35px;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+}
