@@ -1,77 +1,61 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './Tasks.css';
 
 import TasksList from './TasksList';
 
-class Tasks extends Component {
+const Tasks = () => {
+    const [tasks, setTasks] = useState([]);
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            tasks: [],
-        };
-    }
-
-
-    addTask = (event) => {
+    const addTask = (event) => {
         event.preventDefault();
-
-        let newTask = {
-            id: Date.now(),
-            name: this._inputName.value,
-            checked: false,
+      
+        const newTask = {
+          id: Date.now(),
+          name: inputName,
+          checked: false,
+        };
+      
+        const newTasks = [];
+      
+        for (let i = 0; i < tasks.length; i++) {
+          newTasks.push(tasks[i]);
         }
+      
+        newTasks.push(newTask);
+      
+        setTasks(newTasks);
+        setInputName('');
+      }
 
-        this.setState((state) => {
-            return ({
-                tasks: state.tasks.concat(newTask)
-            });
-        })
-
-        this._inputName.value = '';
+    const removeTask = (taskID) => {
+        setTasks(tasks.filter(task => task.id !== taskID));
     }
 
-
-    removeTask = (taskID) => {
-        this.setState(state => {
-            return ({
-                tasks: state.tasks.filter(task => task.id !== taskID)
-            });
+    const updateTask = (taskID) => {
+        const updatedTasks = tasks.map(task => {
+            if (task.id === taskID) {
+                return {
+                    ...task,
+                    checked: !task.checked,
+                };
+            } else {
+                return task;
+            }
         });
+        setTasks(updatedTasks);
     }
 
+    const [inputName, setInputName] = useState('');
 
-    updateTask = (taskID) => {
-        this.setState(state => {
-            const tasks = state.tasks.map(task => {
-                if (task.id === taskID) {
-                    const newTask = {
-                        id: task.id,
-                        name: task.name,
-                        checked: !task.checked,
-                    }
-                    return newTask
-                }
-                return task
-            })
-            return ({
-                tasks: tasks
-            })
-        });
-    }
-
-    render() {
-        return (
-            <div className="adding">
-                <form onSubmit={this.addTask}>
-                    <input ref={(element) => { this._inputName = element; }} type="text" placeholder="enter task" />
-                    <button className='add' type="submit">add</button>
-                </form>
-                <TasksList tasksList={this.state.tasks} removeTaskMethod={this.removeTask} completeTaskMethod={this.completeTask} updateTaskMethod={this.updateTask} />
-            </div>
-        );
-    }
+    return (
+        <div className="adding">
+            <form onSubmit={addTask}>
+                <input value={inputName} onChange={(e) => setInputName(e.target.value)} type="text" placeholder="enter task" />
+                <button className='add' type="submit">add</button>
+            </form>
+            <TasksList tasksList={tasks} removeTaskMethod={removeTask} updateTaskMethod={updateTask} />
+        </div>
+    );
 }
 
 export default Tasks;
