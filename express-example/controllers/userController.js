@@ -8,7 +8,7 @@ module.exports = {
             .then(() => {
                 res.redirect("/blog");
             })
-            .catch((err) => {
+            .catch(() => {
                 res.render("userViews/signupUser", {
                     error: true,
                     message: "User already exist",
@@ -53,5 +53,9 @@ module.exports = {
                 })
             }
         })
+    },
+    logout: (req, res) => {
+    res.clearCookie('AuthToken');
+    res.redirect("/user/login");
     }
 };

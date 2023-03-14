@@ -35,11 +35,12 @@ app.get('/', (req, res) => {
     });
 });
 
+const authHelper = require('./middlewares/authHelper');
 
 const blogRouter = require('./routes/blogRoutes');
 const userRouter = require('./routes/userRoutes');
 
-app.use('/blog', blogRouter);
+app.use('/blog', authHelper, blogRouter);
 app.use('/user', userRouter);
 
 app.listen(8080, () => {
