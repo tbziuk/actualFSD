@@ -1,0 +1,21 @@
+body{
+  background-color: lightskyblue;
+  padding: 0;
+}
+.App {
+  text-align: center;
+  padding: 40px 10px;
+  width: 50%;
+}
+
+@media all and (max-width: 1200px) {
+  .App {
+    width: 60%;
+  }
+}
+
+@media all and (max-width: 900px) {
+  .App {
+    width: 100%;
+  }
+}
