@@ -1,0 +1,39 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">Name</th>
+                <th scope="col" rowspan="2">Username</th>
+                <th scope="col" rowspan="2">Email address</th>
+                <th scope="col" colspan="6" class="text-center">Address</th>
+                <th scope="col" rowspan="2">Phone number</th>
+                <th scope="col" rowspan="2">Website</th>
+            </tr>
+            <tr>
+                <th scope="col">Street</th>
+                <th scope="col">Suite</th>
+                <th scope="col">City</th>
+                <th scope="col">ZIP</th>
+                <th scope="col">Latitude</th>
+                <th scope="col">Longitude</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{username}}</td>
+                <td>{{email}}</td>
+                <td>{{address.street}}</td>
+                <td>{{address.suite}}</td>
+                <td>{{address.city}}</td>
+                <td>{{address.zipcode}}</td>
+                <td>{{address.geo.lat}}</td>
+                <td>{{address.geo.lng}}</td>
+                <td>{{phone}}</td>
+                <td><a href="https://{{website}}">{{website}}</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
