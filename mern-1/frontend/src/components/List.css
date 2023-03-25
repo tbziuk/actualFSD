@@ -1,0 +1,28 @@
+table {
+    width: 100%;
+}
+
+table thead tr th {
+    background-color: #707070;
+    color: #fff;
+}
+
+table tbody tr td:first-child  {
+    text-align: center;
+}
+
+table tbody tr:nth-child(odd) td {
+    background-color: #d1d1d1;
+}
+
+table tbody tr:nth-child(even) td {
+    background-color: #ababab;
+}
+
+table tbody tr td button {
+    background-color: #707070;
+    color: #fff;
+    font-weight: 400;
+    display: block;
+    margin: 0 auto;
+}

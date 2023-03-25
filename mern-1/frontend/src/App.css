@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: start;
+  padding: 10px 30px;
+}
+
+.App h2 {
+  font-size: 26px;
+  margin: 10px 0;
+  padding: 0;
+  color: #fff;
+}
